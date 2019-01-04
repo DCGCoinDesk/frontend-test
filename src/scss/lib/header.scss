@@ -1,0 +1,24 @@
+#header {
+  height: $headerHeight;
+  background-color: #000;
+  > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+  a {
+    line-height: 0;
+  }
+  @include breakpoint(desktop) {
+    height: $desktopHeaderHeight;
+    display: flex;
+    justify-content: center;
+    > div {
+      width: $desktopSiteWidth;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+}

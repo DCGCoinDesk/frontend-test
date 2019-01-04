@@ -1,0 +1,86 @@
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@mixin marginRight($margin: 0px) {
+  margin-right: $margin;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@mixin marginBottom($margin: 0px) {
+  > * {
+    margin-bottom: $margin;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@mixin responsiveMarginBottom($mobile: 3vw, $desktop: 20px) {
+  > * {
+    margin-bottom: $mobile;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @include breakpoint(desktop) {
+    > * {
+      margin-bottom: $desktop;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin scale($originalWidth, $originalHeight, $newWidth) {
+  width: $newWidth;
+  height: calc(
+    #{$newWidth} / (#{strip-units($originalWidth)} / #{strip-units(
+            $originalHeight
+          )})
+  );
+}
+
+@mixin breakpoint($class) {
+  @if $class == phone {
+    @media (max-width: $desktopSiteWidth - 1) {
+      @content;
+    }
+  } @else if $class == desktop {
+    @media (min-width: $desktopSiteWidth) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint mixin supports: phone, tablet, desktop";
+  }
+}
+
+@mixin page() {
+  @include breakpoint(desktop) {
+    min-height: calc(100vh - #{$desktopFooterHeight} - #{$desktopHeaderHeight});
+    @include logged-in {
+      min-height: calc(
+        100vh - #{$desktopFooterHeight} - #{$desktopHeaderHeight} - #{$desktopWpHeaderHeight}
+      );
+    }
+  }
+
+  min-height: calc(100vh - #{$headerHeight} - 150px);
+}
+
+@mixin responsivePadding(
+  $paddingLeftMobile: 3vw,
+  $paddingRightMobile: 3vw,
+  $paddingLeftDektop: 0px,
+  $paddingRightDesktop: 0px
+) {
+  @include breakpoint(desktop) {
+    padding-left: $paddingLeftDektop;
+    padding-right: $paddingRightDesktop;
+  }
+  padding-left: $paddingLeftMobile;
+  padding-right: $paddingRightMobile;
+}

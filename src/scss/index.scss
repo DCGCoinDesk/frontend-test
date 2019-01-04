@@ -1,0 +1,17 @@
+@import "~normalize.css/normalize.css";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import "_variables";
+@import "_mixins";
+@import "lib/index";
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  *,
+  > *:before,
+  > *:after {
+    box-sizing: inherit;
+  }
+}

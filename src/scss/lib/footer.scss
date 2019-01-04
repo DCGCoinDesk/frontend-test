@@ -1,0 +1,22 @@
+#footer {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $footerHeight;
+  @include breakpoint(desktop) {
+    height: $desktopFooterHeight;
+  }
+  a {
+    line-height: 0;
+  }
+  > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include breakpoint(desktop) {
+      width: $desktopSiteWidth;
+    }
+  }
+}
