@@ -1,0 +1,66 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "React": true,
+    "Component": true,
+    "Fragment": true,
+    "PropTypes": true,
+    "connect": true,
+    "Actions": true,
+    "Helpers": true,
+    "Reducers": true,
+    "Components": true,
+    "Pages": true,
+    "Link": true
+  },
+  "rules": {
+    "max-len": [
+      "warn",
+      {
+        "code": 125,
+        "ignoreRegExpLiterals": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreStrings": true,
+        "ignoreUrls": true
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "err"
+      }
+    ],
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": false,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-undef": 2,
+    "no-console": 0,
+    "no-fallthrough": 0,
+    "react/no-unescaped-entities": 0,
+    "arrow-body-style": ["error", "as-needed"],
+    "react/jsx-no-undef": [2, { "allowGlobals": true }]
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["prettier", "react"],
+  "extends": ["plugin:react/recommended", "prettier", "prettier/react"]
+}

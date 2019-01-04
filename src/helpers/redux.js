@@ -1,22 +1,20 @@
-const { applyMiddleware, createStore, combineReducers } = require("redux");
-const {
-  composeWithDevTools
-} = require("redux-devtools-extension/logOnlyInProduction");
-const { connectRouter, routerMiddleware } = require("connected-react-router");
-const promise = require("redux-promise").default;
-const { createLogger } = require("redux-logger");
-const thunk = require("redux-thunk").default;
-const { createBrowserHistory, createMemoryHistory } = require("history");
-const formReducer = require("redux-form").reducer;
-const responsiveReducer = require("react-responsive-redux").reducer;
+import { applyMiddleware, createStore, combineReducers } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
+import { connectRouter, routerMiddleware } from "connected-react-router";
+import promise from "redux-promise";
+import { createLogger } from "redux-logger";
+import thunk from "redux-thunk";
+import { createBrowserHistory } from "history";
+import { reducer as formReducer } from "redux-form";
+import { reducer as responsiveReducer } from "react-responsive-redux";
+
+let history = createBrowserHistory();
 
 export const configureStore = function({
   reducers,
   injectedState = {},
-  injectedContext = {},
   injectedMiddleware
 }) {
-  let history = createBrowserHistory();
   let middleware = [
     thunk,
     promise,
@@ -38,11 +36,14 @@ export const configureStore = function({
       form: formReducer,
       router: connectRouter(history)
     });
-
+  let composeEnhancers = composeWithDevTools({
+    trace: true,
+    traceLimit: 25
+  });
   let store = createStore(
     createRootReducer(history),
     injectedState,
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeEnhancers(applyMiddleware(...middleware))
   );
   return [store, history];
 };

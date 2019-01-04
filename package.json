@@ -3,21 +3,29 @@
   "version": "1.0.0",
   "description": "A take-home test for prospective frontend engineers at CoinDesk.",
   "repository": "git@github.com:DCGCoinDesk/frontend-test.git",
-  "author": "spencerbeggs <spencer@coindesk.com>",
+  "author": "C. Spencer Beggs <spencer@coindesk.com>",
   "license": "MIT",
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "css-loader": "^2.1.0",
+    "eslint": "^5.11.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
+    "prettier": "^1.15.3",
+    "prettier-eslint": "^8.8.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.28.3",
@@ -25,8 +33,11 @@
     "webpack-dev-server": "^3.1.14"
   },
   "scripts": {
-    "dev": "webpack-dev-server --open --mode development",
-    "build": "webpack -p"
+    "dev": "webpack-dev-server --open --mode development"
+  },
+  "engines": {
+    "node": "^11.6.0",
+    "npm": "^6.5.0-next.0"
   },
   "dependencies": {
     "connected-react-router": "^6.1.0",
@@ -39,11 +50,14 @@
     "react-redux": "^6.0.0",
     "react-responsive-redux": "^0.7.0",
     "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
     "redux-form": "^8.1.0",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "to-slug-case": "^1.0.0",
+    "typography": "^0.16.18"
   }
 }

@@ -1,0 +1,16 @@
+.page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+  #container {
+    padding: 5vw;
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    @include breakpoint(desktop) {
+      padding: 20px;
+      width: $desktopSiteWidth;
+    }
+  }
+}

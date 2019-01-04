@@ -8,6 +8,9 @@
     padding-right: 5vw;
     padding-left: 5vw;
   }
+  a {
+    line-height: 0;
+  }
   @include breakpoint(desktop) {
     height: $desktopHeaderHeight;
     display: flex;

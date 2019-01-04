@@ -14,6 +14,7 @@ module.exports = {
     filename: "coindesk.js",
     publicPath: "/dist"
   },
+  stats: "none",
   module: {
     rules: [
       {
@@ -52,7 +53,9 @@ module.exports = {
       Actions: [path.resolve(__dirname, "./src/actions/index")],
       Helpers: [path.resolve(__dirname, "./src/helpers/index")],
       Reducers: [path.resolve(__dirname, "./src/reducers/index")],
-      Components: [path.resolve(__dirname, "./src/components/index")]
+      Components: [path.resolve(__dirname, "./src/components/index")],
+      Pages: [path.resolve(__dirname, "./src/pages/index")],
+      Link: ["react-router-dom", "Link"]
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
@@ -65,6 +68,10 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.join(__dirname, "src"),
+    historyApiFallback: {
+      index: "index.html"
+    },
+    stats: "none",
     compress: true,
     port: 3000
   }
