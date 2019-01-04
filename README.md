@@ -24,11 +24,13 @@ npm run dev
 
 We would like you to develop two responsive frontend experiences. We are not going to provide you with a design to work from; instead, we want you to implement the UX from the requirements described below. This repository contains boilerplate code to get your started, which sets up a responsive [React](https://reactjs.org/) app configured with [Redux](https://redux.js.org/) and [React Router](https://github.com/ReactTraining/react-router) (via [connected-react-router](https://github.com/supasate/connected-react-router#readme)). You can change as much or as little of the frontend code as you would like. You are welcome to add modules and restructure our code.
 
+Application entry point for JS is `src/app.jsx` — this is where you add reducers and routes. For SCSS it is `src/scss/index.scss`. You should start exploring there.
+
 As you progress through the test please make regular commits to the application with descriptive commit messages. The application should be useable at each commit. We want to see how your approach building out features. You can [squash your commits](https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/) together if you make a mistake or need to stash your code for a bit.
 
 Please divide your code into sensible chunks of JS and SCSS. Favor multiple components and files over cramming everything together.
 
-Application entry point for JS is `src/app.jsx` — this is where you add reducers and routes. For SCSS it is `src/scss/index.scss`.
+When you are finished with your test. Deleted the `node_modules` folder, zip up your project including the hidden `.git` directory and send it back to us.
 
 #### Where to Get the Data
 
@@ -68,7 +70,7 @@ Build and deploy your code to a live domain that uses https. Your build process 
 This repo contains a JS style guide via [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/). Your code should follow both the formatting and style specified in both. Although, you can use any ESLint- and Prettier-compatible tools to check your code, however, we want you to spend your time coding, not fighting with your editor, so we have included [VSCode](https://code.visualstudio.com/Download) workspace settings in this repo. After you have installed the dependencies in this project, you can just open open the project in VSCode, it will ask your to install the reccomended plugins and then VSCode will automatically lint and format your code every time you hit save.
 
 - Please use flexbox when building your CSS layout.
-- You do not need to worry about browser compatibility. Latest Chrome is all you ned to target.
+- You do not need to worry about browser compatibility. Latest Chrome is all you need to target.
 
 ## Tips
 
