@@ -8,15 +8,15 @@ To complete this test you will need to install [Node.js v11.6.0](https://nodejs.
 
 Clone (don't fork) this repository and install the dependencies:
 
-```
+```bash
 git clone git@github.com:DCGCoinDesk/frontend-test.git
 cd frontend-test
 npm install
 ```
 
-Once your dependencies are instally you can run a live [webpack-dev-server](https://github.com/webpack/webpack-dev-server) that will autocompile your SCSS and hot-reload your JS bundles with:
+Once your dependencies are installed, you can run a live [webpack-dev-server](https://github.com/webpack/webpack-dev-server) that will autocompile your SCSS and hot-reload your JS bundles with:
 
-```
+```bash
 npm run dev
 ```
 
@@ -26,17 +26,17 @@ We would like you to develop two responsive frontend experiences. We are not goi
 
 Application entry point for JS is `src/app.jsx` — this is where you add reducers and routes. For SCSS it is `src/scss/index.scss`. You should start exploring there.
 
-As you progress through the test please make regular commits to the application with descriptive commit messages. The application should be useable at each commit. We want to see how your approach building out features. You can [squash your commits](https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/) together if you make a mistake or need to stash your code for a bit.
+As you progress through the test please make regular commits to the application with descriptive commit messages — one line is enough. The application should be useable at each commit. We want to see how your approach building out features. You can [squash your commits](https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/) together if you make a mistake or need to stash your code for a bit.
 
 Please divide your code into sensible chunks of JS and SCSS. Favor multiple components and files over cramming everything together.
 
-When you are finished with your test. Deleted the `node_modules` folder, zip up your project including the hidden `.git` directory and send it back to us.
+When you are finished with your test. Delete the `node_modules` folder, zip up your project including the hidden `.git` directory and send it back to us.
 
-#### Where to Get the Data
+### Where to Get the Data
 
 CoinDesk tracks 19 different cryptocurrencies. You can retreive real-time data about all of the asset types by making a single `GET` request to the following endpoint.
 
-```
+```bash
 https://production.api.coindesk.com/v1/MarketInterestTable?convert=USD
 ```
 
@@ -45,7 +45,7 @@ https://production.api.coindesk.com/v1/MarketInterestTable?convert=USD
 We would like you to develop a list of price data about our cryptocurrencies. The UX should:
 
 - Refresh data every 60 seconds
-- Display the time the data was updated as well as the relative time the data was update (eg, update 5 minutes ago)
+- Display the time the data was updated as well as the relative time the data was update (eg, "updated 5 minutes ago")
 - Display the icon, name and abbreviation (ISO) of each asset
 - Display the price in USD, the market capitalizion (price of the total supply), and volume of each asset
 - Display the open, high, low and close price in USD
@@ -63,21 +63,41 @@ The UI should survive a page refresh and the price of assets should be refreshed
 
 ### Bonus Points (optional)
 
-Build and deploy your code to a live domain that uses https. Your build process should be able to be triggered with an `npm run build` command.
+Build and deploy your code to a live domain that uses https. Your build process should be able to be triggered with an `npm run build` command from the repo.
 
 ## Code Style
 
-This repo contains a JS style guide via [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/). Your code should follow both the formatting and style specified in both. Although, you can use any ESLint- and Prettier-compatible tools to check your code, however, we want you to spend your time coding, not fighting with your editor, so we have included [VSCode](https://code.visualstudio.com/Download) workspace settings in this repo. After you have installed the dependencies in this project, you can just open open the project in VSCode, it will ask your to install the reccomended plugins and then VSCode will automatically lint and format your code every time you hit save.
+This repo contains a JS style guide via [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/). Your code should follow both the formatting and style specified in both. You can use any ESLint- and Prettier-compatible tools to check your code, however, we want you to spend your time coding, not fighting with your editor, so we have included [VSCode](https://code.visualstudio.com/Download) workspace settings in this repo. After you have installed the dependencies in this project, you can just open the project in VSCode, it will prompt you to install some reccomended plugins and then VSCode will automatically lint and format your code every time you hit save.
 
 - Please use flexbox when building your CSS layout.
 - You do not need to worry about browser compatibility. Latest Chrome is all you need to target.
+- Store Redux actions in the `src/actions` folder
+- Use Redux's [mapDispatchToProps()](https://redux.js.org/basics/usage-with-react#implementing-container-components) function in your React components
+
+Images in `src/images` are served by the development server. In JSX or SCSS, you can reference them with absolute paths, eg:
+
+```html
+<img src="/images/foobar.png" />
+```
+
+or
+
+```css
+.my-class {
+    background-image: url("/images/foobar.png";
+}
+```
 
 ## Tips
 
 We don't just want you to implement the features described, we want you to implement them with an eye on elegant, understandable user interface. Be sure to think about how a user navigates between your features. You do not have to divide the application into pages or use the router if you do not want to.
 
-- Images in `src/images` are served by the development server. In JS or SCSS, you can reference them with absolute paths, eg, `<img src="/images/foobar.png" />` or `.my-class { background-image: url("/images/foobar.png"; }`.
+- We have use Webpack's [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) to register globals:
+  - From React: React, Component, Fragment, PropTypes
+  - From Redux: connect()
+  - From React Router: Link
+  - From our local code: Actions, Components, Helpers, Pages
 - Don't forget to define [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html) for your React components. ESLint will warn you if you forget.
 - Redux is preconfigured with [redux-thunk](https://github.com/reduxjs/redux-thunk), [redux-promise](https://github.com/redux-utilities/redux-promise), [redux-responsive](https://github.com/AlecAivazis/redux-responsive), [redux-logger](https://github.com/LogRocket/redux-logger#readme) and [redux-devtools-extention](https://github.com/zalmoxisus/redux-devtools-extension). You are welcome to add more plugins if you with. The setup is in `src/helpers/redux.js`.
-- Redux is also precoinfigured with [Redux Form](https://redux-form.com/8.1.0/). Like everything in this repo, using this is completly optional, but you may find it useful for form state management it the second feature.
-- React Router documentation is here, if you need it: https://reacttraining.com/react-router/
+- Redux is also preconfigured with [Redux Form](https://redux-form.com/8.1.0/) reducer. Like everything in this repo, using this is completly optional, but you may find it useful for form state management when developing the second feature.
+- Check the [React Router documentation](https://reacttraining.com/react-router/) if you need it.
