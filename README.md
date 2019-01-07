@@ -84,7 +84,7 @@ or
 
 ```css
 .my-class {
-    background-image: url("/images/foobar.png";
+  background-image: url("/images/foobar.png");
 }
 ```
 
